@@ -1,85 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Create a new Stack of integers
-        Stack<int> stack = new Stack<int>();
+        // Declare and initialize an array
+        int[] numbers = new int[5] { 1, 2, 3, 4, 5 };
 
-        // Push elements onto the stack
-        stack.Push(1);
-        stack.Push(2);
-        stack.Push(3);
-
-        // Print the stack
-        Console.WriteLine("Stack elements:");
-        foreach (int item in stack)
+        // Access and print array elements
+        Console.WriteLine("Array elements:");
+        for (int i = 0; i < numbers.Length; i++)
         {
-            Console.WriteLine(item);
+            Console.WriteLine($"Element at index {i}: {numbers[i]}");
         }
 
-        // Peek at the top element without removing it
-        Console.WriteLine($"\nTop element: {stack.Peek()}");
+        // Modify an array element
+        numbers[2] = 10;
+        Console.WriteLine($"\nModified element at index 2: {numbers[2]}");
 
-        // Pop an element from the stack
-        int poppedItem = stack.Pop();
-        Console.WriteLine($"Popped element: {poppedItem}");
+        // Another way to declare and initialize an array
+        string[] fruits = { "Apple", "Banana", "Orange" };
 
-        // Check if the stack contains a specific element
-        bool contains2 = stack.Contains(2);
-        Console.WriteLine($"\nDoes the stack contain 2? {contains2}");
-
-        // Get the count of elements
-        Console.WriteLine($"Number of elements: {stack.Count}");
-
-        // Clear all elements
-        stack.Clear();
-        Console.WriteLine($"Number of elements after clearing: {stack.Count}");
-
-        // Example: Using a stack to reverse a string
-        string original = "Hello, World!";
-        Stack<char> charStack = new Stack<char>();
-
-        // Push each character onto the stack
-        foreach (char c in original)
+        // Using foreach to iterate through the array
+        Console.WriteLine("\nFruits:");
+        foreach (string fruit in fruits)
         {
-            charStack.Push(c);
+            Console.WriteLine(fruit);
         }
 
-        // Pop characters from the stack to reverse the string
-        string reversed = new string(charStack.ToArray());
-        Console.WriteLine($"\nOriginal string: {original}");
-        Console.WriteLine($"Reversed string: {reversed}");
+        // Multi-dimensional array
+        int[,] matrix = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };
 
-        // Example: Check for balanced parentheses
-        string expression = "((())())()";
-        bool isBalanced = CheckBalancedParentheses(expression);
-        Console.WriteLine($"\nExpression: {expression}");
-        Console.WriteLine($"Is balanced? {isBalanced}");
-    }
-
-    static bool CheckBalancedParentheses(string expression)
-    {
-        Stack<char> stack = new Stack<char>();
-
-        foreach (char c in expression)
+        // Access and print multi-dimensional array elements
+        Console.WriteLine("\nMatrix elements:");
+        for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            if (c == '(')
+            for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                stack.Push(c);
+                Console.Write($"{matrix[i, j]} ");
             }
-            else if (c == ')')
-            {
-                if (stack.Count == 0)
-                {
-                    return false;
-                }
-                stack.Pop();
-            }
+            Console.WriteLine();
         }
-
-        return stack.Count == 0;
     }
 }
